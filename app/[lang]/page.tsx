@@ -8,7 +8,6 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
 
   return (
     <main className="bg-black min-h-screen text-white">
-      {/* HEADER MIX-BLEND */}
       <header className="fixed top-0 w-full z-50 p-8 flex justify-between items-center mix-blend-difference">
         <div className="font-bold tracking-[0.3em] text-[10px] uppercase">Skander Zarrad</div>
         <div className="flex gap-6 text-[10px] tracking-widest uppercase font-black">
@@ -18,7 +17,6 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
         </div>
       </header>
 
-      {/* HERO SECTION */}
       <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
         <Image 
             src={lieux[0].image} 
@@ -32,7 +30,6 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
         </h1>
       </section>
 
-      {/* GRID SECTION */}
       <section className="max-w-[1400px] mx-auto py-20 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {lieux.map((lieu, index) => (
