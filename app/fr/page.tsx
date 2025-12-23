@@ -5,54 +5,70 @@ import Link from "next/link";
 export default function Page() {
   const currentLang = 'fr';
 
-  if (!lieux || lieux.length === 0) {
-    return <div className="bg-black min-h-screen text-white flex items-center justify-center tracking-[0.5em]">CHARGEMENT...</div>;
-  }
-
   return (
-    <main className="bg-black min-h-screen text-white font-sans">
-      <header className="fixed top-0 w-full z-50 p-8 md:p-12 flex justify-between items-center mix-blend-difference text-white">
-        <div className="font-bold tracking-[0.4em] text-[10px] md:text-[12px] uppercase">Skander Zarrad</div>
-        <nav className="flex gap-8 text-[10px] md:text-[11px] tracking-[0.2em] uppercase font-black">
-           <Link href="#" className="opacity-20">AR</Link>
-           <Link href="/fr" className="border-b border-white pb-1">FR</Link>
-           <Link href="#" className="opacity-20">EN</Link>
+    <main className="bg-black min-h-screen text-white font-sans antialiased">
+      
+      {/* HEADER : Très fin, collé en haut */}
+      <header className="w-full px-6 py-10 md:px-16 flex justify-between items-center border-b border-white/5">
+        <div className="flex flex-col">
+          <span className="font-bold tracking-[0.4em] text-[13px] md:text-[16px] uppercase">Skander Zarrad</span>
+          <span className="text-[9px] tracking-[0.2em] uppercase opacity-50 mt-1">Photographie d&apos;architecture & Patrimoine</span>
+        </div>
+        <nav className="flex gap-10 text-[10px] tracking-[0.3em] uppercase font-bold">
+           <Link href="/fr" className="text-white">Portfolio</Link>
+           <Link href="#" className="opacity-40 hover:opacity-100 transition-opacity">Contact</Link>
         </nav>
       </header>
 
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        {lieux[0] && (
-          <Image src={lieux[0].image} alt="Hero" fill className="object-cover opacity-60 grayscale brightness-75" priority />
-        )}
-        <h1 className="relative z-10 text-[24vw] font-black leading-none tracking-tighter opacity-90 select-none mix-blend-overlay">LIEUX</h1>
-      </section>
-
-      <section className="max-w-[1600px] mx-auto py-32 px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+      {/* GRILLE MOSAÏQUE : Très grandes images, couleurs naturelles */}
+      <section className="w-full py-10 px-6 md:px-12">
+        <div className="flex flex-col gap-20 md:gap-32 max-w-[1600px] mx-auto">
           {lieux.map((lieu: any, index: number) => (
-            <Link key={lieu.id} href={`/fr/lieux/${lieu.slug}`} className="block">
-              <div className={`group relative overflow-hidden bg-zinc-950 transition-all duration-700 ${index === 0 ? 'md:col-span-2 aspect-[21/9]' : 'aspect-[4/5]'}`}>
+            <Link key={lieu.id} href={`/fr/lieux/${lieu.slug}`} className="group block w-full">
+              
+              {/* Conteneur Image : Grande taille, respecte les couleurs */}
+              <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-zinc-900">
                 <Image 
                   src={lieu.image} 
                   alt={lieu.title[currentLang]} 
                   fill 
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-[1.5s] opacity-60 group-hover:opacity-100" 
+                  className="object-cover transition-transform duration-[2s] group-hover:scale-105" 
+                  priority={index < 2}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-8 md:p-16 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                  <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-4 block">{lieu.category}</span>
-                  <h3 className="text-3xl md:text-5xl font-black mb-3 leading-tight">{lieu.title[currentLang]}</h3>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-white/40">{lieu.location}</p>
+              </div>
+
+              {/* Infos sous l'image : Style Flickr/Adobe Portfolio */}
+              <div className="mt-8 flex justify-between items-start border-l border-white/20 pl-6">
+                <div>
+                  <h3 className="text-2xl md:text-4xl font-light uppercase tracking-tight mb-2">
+                    {lieu.title[currentLang]}
+                  </h3>
+                  <div className="flex gap-4 items-center opacity-40 text-[10px] tracking-[0.3em] uppercase">
+                    <span>{lieu.category}</span>
+                    <span className="w-1 h-1 bg-white rounded-full"></span>
+                    <span>{lieu.location}</span>
+                  </div>
                 </div>
+                <span className="text-[11px] font-mono opacity-20 hidden md:block">
+                  / 0{lieu.id}
+                </span>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      <footer className="py-20 text-center opacity-30">
-        <p className="text-[9px] tracking-[0.5em] uppercase">
-          © {new Date().getFullYear()} Skander Zarrad — Architecte d&apos;intérieur
-        </p>
+      {/* FOOTER : Simple et élégant */}
+      <footer className="py-20 px-8 md:px-16 mt-20 border-t border-white/5">
+        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+          <p className="text-[10px] tracking-[0.4em] uppercase opacity-40">
+            © {new Date().getFullYear()} Skander Zarrad Archive
+          </p>
+          <div className="flex gap-8 text-[10px] tracking-[0.4em] uppercase font-bold">
+            <Link href="https://instagram.com/skanderzarrad" target="_blank" className="hover:line-through">Instagram</Link>
+            <Link href="https://www.flickr.com/photos/skanderzarradphotographe/" target="_blank" className="hover:line-through">Flickr</Link>
+          </div>
+        </div>
       </footer>
     </main>
   );

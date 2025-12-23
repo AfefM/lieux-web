@@ -7,7 +7,11 @@ const config: Config = {
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'], // Assure-toi d'avoir une police sans-serif
+      },
+    },
   },
   plugins: [],
 };

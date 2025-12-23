@@ -1,26 +1,27 @@
 export const lieux = [
   {
     id: 1,
-    slug: "residence-el-hania",
-    image: "/images/hero.jpg",
-    category: "Architecture",
-    location: "Tunis, TN",
-    title: {
-      fr: "Résidence El-Hania",
-      ar: "إقامة الهنية",
-      en: "El-Hania Residence"
-    }
+    slug: "lieu-1",
+    image: "/images/lieu1.jpg",
+    category: "Architecture Antique",
+    location: "Tunisie",
+    title: { fr: "Vestiges Historiques", ar: "آثار تاريخية", en: "Historical Remains" }
   },
   {
     id: 2,
-    slug: "villa-bleue",
+    slug: "lieu-2",
     image: "/images/lieu2.jpg",
-    category: "Design d'intérieur",
-    location: "Sidi Bou Said, TN",
-    title: {
-      fr: "Villa Bleue",
-      ar: "Villa Bleue",
-      en: "Blue Villa"
-    }
-  }
+    category: "Paysage",
+    location: "Région Nord",
+    title: { fr: "Vallée Verdoyante", ar: "وادي أخضر", en: "Green Valley" }
+  },
+  {
+    id: 3,
+    slug: "lieu-3",
+    image: "/images/lieu3.jpg",
+    category: "Patrimoine",
+    location: "Site Archéologique",
+    title: { fr: "Colonnes Antiques", ar: "أعمدة أثرية", en: "Ancient Columns" }
+  },
+  // Ajoute les autres de 4 à 10 en suivant le même modèle
 ];
