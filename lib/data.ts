@@ -1,27 +1,30 @@
-export const lieux = [
+export interface Lieu {
+  id: number;
+  slug: string;
+  image: string;
+  category: string;
+  location: string;
+  title: { fr: string; ar: string; en: string };
+  description: string;
+}
+
+export const lieux: Lieu[] = [
   {
     id: 1,
-    slug: "lieu-1",
+    slug: "vestiges-romains",
     image: "/images/lieu1.jpg",
-    category: "Architecture Antique",
+    category: "Patrimoine Antique",
     location: "Tunisie",
-    title: { fr: "Vestiges Historiques", ar: "آثار تاريخية", en: "Historical Remains" }
+    title: { fr: "Dougga l'éternelle", ar: "دقة الأثرية", en: "Ancient Dougga" },
+    description: "Une série sur la cité antique de Dougga. Ici, la pierre calcaire capte la lumière dorée, créant un contraste saisissant avec l'horizon méditerranéen."
   },
   {
     id: 2,
-    slug: "lieu-2",
+    slug: "geometrie-moderne",
     image: "/images/lieu2.jpg",
-    category: "Paysage",
-    location: "Région Nord",
-    title: { fr: "Vallée Verdoyante", ar: "وادي أخضر", en: "Green Valley" }
-  },
-  {
-    id: 3,
-    slug: "lieu-3",
-    image: "/images/lieu3.jpg",
-    category: "Patrimoine",
-    location: "Site Archéologique",
-    title: { fr: "Colonnes Antiques", ar: "أعمدة أثرية", en: "Ancient Columns" }
-  },
-  // Ajoute les autres de 4 à 10 en suivant le même modèle
+    category: "Architecture",
+    location: "Tunis, TN",
+    title: { fr: "Lignes Urbaines", ar: "هندسة معاصرة", en: "Urban Lines" },
+    description: "Une étude sur le minimalisme des structures contemporaines. Le regard se porte sur la pureté des courbes et la danse des ombres portées."
+  }
 ];

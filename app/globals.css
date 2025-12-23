@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 body {
-  background-color: black;
-  color: white;
+  background-color: #f8f8f8; /* Blanc cassé très élégant */
+  color: #1a1a1a; /* Texte presque noir */
   margin: 0;
+}
+
+/* Supprime les couleurs par défaut des liens */
+a {
+  color: inherit;
+  text-decoration: none;
 }
