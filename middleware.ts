@@ -1,29 +1,35 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const locales = ['fr', 'ar', 'en'];
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 1. Vérifie si le chemin contient déjà une langue
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  // 1. Liste des langues
+  const locales = ['fr', 'ar', 'en'];
+
+  // 2. Vérifier si l'URL commence déjà par une langue
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  // 3. IMPORTANT : On ignore les fichiers dans /public (images, logo, etc.)
+  // Si c'est une image, on ne redirige pas.
+  if (
+    pathname.includes('.') || 
+    pathname.startsWith('/api') || 
+    pathname.startsWith('/_next')
+  ) {
+    return;
+  }
 
-  // 2. Si pas de langue, on force la redirection vers /fr
-  const locale = 'fr';
-  const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname === '/' ? '' : pathname}`;
-  
-  return NextResponse.redirect(url);
+  // 4. Redirection vers /fr si la langue manque
+  if (pathnameIsMissingLocale) {
+    const url = new URL(`/fr${pathname}`, request.url);
+    return NextResponse.redirect(url);
+  }
 }
 
 export const config = {
-  // On ignore les fichiers statiques et techniques
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|images|public).*)',
-  ],
+  // On filtre pour ne pas faire tourner le middleware sur les images
+  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico).*)'],
 };
