@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
 export default function RootPage() {
-  // Redirige directement vers la version française au chargement
+  // On envoie tout le monde sur la version française par défaut
   redirect('/fr');
 }
