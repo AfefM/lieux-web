@@ -1,10 +1,22 @@
 import { lieux } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function Page(props: { params: Promise<{ lang: string }> }) {
   const { lang } = await props.params;
-  const currentLang = (lang as 'fr' | 'ar' | 'en') || 'fr';
+  
+  // Sécurité pour les langues supportées
+  if (!['fr', 'ar', 'en'].includes(lang)) {
+    return notFound();
+  }
+
+  const currentLang = lang as 'fr' | 'ar' | 'en';
+
+  // Sécurité si les données sont vides
+  if (!lieux || lieux.length === 0) {
+    return <div className="bg-black min-h-screen text-white flex items-center justify-center">Aucune donnée trouvée.</div>;
+  }
 
   return (
     <main className="bg-black min-h-screen text-white">
@@ -18,13 +30,15 @@ export default async function Page(props: { params: Promise<{ lang: string }> })
       </header>
 
       <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
-        <Image 
-            src={lieux[0].image} 
-            alt="Hero" 
-            fill 
-            className="object-cover opacity-40 grayscale" 
-            priority 
-        />
+        {lieux[0] && (
+          <Image 
+              src={lieux[0].image} 
+              alt="Hero" 
+              fill 
+              className="object-cover opacity-40 grayscale" 
+              priority 
+          />
+        )}
         <h1 className="relative z-10 text-[22vw] font-black leading-none tracking-tighter opacity-80 select-none">
             LIEUX
         </h1>
