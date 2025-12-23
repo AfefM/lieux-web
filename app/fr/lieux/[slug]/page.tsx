@@ -24,7 +24,7 @@ export default async function LieuPage({ params }: { params: Promise<{ slug: str
       <section className="relative h-[90vh] w-full overflow-hidden">
         <Image src={lieu.image} alt={lieu.title[currentLang]} fill className="object-cover brightness-75" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-        <div className="absolute bottom-12 left-8 md:left-16">
+        <div className="absolute bottom-12 left-8 md:left-16 text-white">
           <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 mb-4 block">{lieu.category}</span>
           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">{lieu.title[currentLang]}</h1>
         </div>
