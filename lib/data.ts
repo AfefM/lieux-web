@@ -1,38 +1,49 @@
-export interface Lieu {
-  id: string;
-  category: 'Patrimoine' | 'Architecture' | 'Paysage';
-  title: { fr: string; ar: string; en: string };
-  location: string;
-  image: string;
-}
+// lib/data.ts
 
-export const lieux: Lieu[] = [
+export const lieux = [
   {
-    id: "amphitheatre",
-    category: "Patrimoine",
-    title: { fr: "L'Amphithéâtre", ar: "المسرح الأثري", en: "The Amphitheatre" },
-    location: "El Jem, Tunisie",
-    image: "/images/597440660_1363566691885361_1142099729434587204_n.jpg"
+    id: 1,
+    image: "/images/hero.jpg", // Assure-toi que cette image est dans public/images/
+    category: "Architecture",
+    location: "Tunis, TN",
+    title: {
+      fr: "Résidence El-Hania",
+      ar: "إقامة الهنية",
+      en: "El-Hania Residence"
+    }
   },
   {
-    id: "temple-concordia",
-    category: "Architecture",
-    title: { fr: "Temple de la Concorde", ar: "معبد كونكورديا", en: "Temple of Concordia" },
-    location: "Sicile, Italie",
-    image: "/images/596144656_1362203858688311_8278407766654426625_n.jpg"
+    id: 2,
+    image: "/images/lieu2.jpg",
+    category: "Design d'intérieur",
+    location: "Sidi Bou Said, TN",
+    title: {
+      fr: "Villa Bleue",
+      ar: "Villa Bleue",
+      en: "Blue Villa"
+    }
   },
   {
-    id: "columns-detail",
-    category: "Architecture",
-    title: { fr: "Détails Doriques", ar: "تفاصيل دوريكية", en: "Doric Details" },
-    location: "Vallée des Temples",
-    image: "/images/595545878_1362203855354978_2568394050439283197_n.jpg"
+    id: 3,
+    image: "/images/lieu3.jpg",
+    category: "Espace Commercial",
+    location: "La Marsa, TN",
+    title: {
+      fr: "Boutique Concept",
+      ar: "Boutique Concept",
+      en: "Concept Store"
+    }
   },
   {
-    id: "horizon",
+    id: 4,
+    image: "/images/lieu4.jpg",
     category: "Architecture",
-    title: { fr: "Horizon Urbain", ar: "أفق المدينة", en: "Urban Horizon" },
-    location: "Méditerranée",
-    image: "/images/597463765_1362203852021645_8963845030945460329_n.jpg"
+    location: "Hammamet, TN",
+    title: {
+      fr: "Maison de Plage",
+      ar: "منزل شاطئ",
+      en: "Beach House"
+    }
   }
+  // Tu peux copier-coller un bloc ci-dessus pour ajouter autant de lieux que tu veux
 ];
