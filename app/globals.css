@@ -11,4 +11,5 @@ body {
   background: black;
   color: white;
   margin: 0;
+  font-family: sans-serif; /* Ou ta police préférée */
 }
