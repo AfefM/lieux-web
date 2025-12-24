@@ -4,11 +4,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, MapPin, Calendar, ShoppingCart } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar } from "lucide-react";
 
 export default function LieuDetails({ params }: { params: { slug: string } }) {
   const lieu = lieux.find((l) => l.slug === params.slug);
-
   if (!lieu) return notFound();
 
   return (
@@ -21,7 +20,7 @@ export default function LieuDetails({ params }: { params: { slug: string } }) {
         <div className="font-black tracking-[0.2em] text-xs uppercase italic opacity-40 text-white">SZ. ARCHIVES</div>
       </nav>
 
-      <section className="relative h-[80vh] w-full bg-zinc-900 overflow-hidden">
+      <section className="relative h-[75vh] w-full bg-zinc-900 overflow-hidden">
         <Image src={lieu.image} alt={lieu.title.fr} fill className="object-cover opacity-70 contrast-125" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         <div className="absolute bottom-12 left-0 w-full px-6 md:px-12">
@@ -49,8 +48,8 @@ export default function LieuDetails({ params }: { params: { slug: string } }) {
                  <li>Tirages d'art numérotés</li>
                </ul>
             </div>
-            <div className="max-w-xs space-y-6">
-               <Link href="#" className="inline-block bg-white text-black text-[10px] uppercase tracking-[widest] font-black px-8 py-4 hover:invert transition-all">
+            <div className="max-w-xs">
+               <Link href="#" className="inline-block bg-white text-black text-[10px] uppercase tracking-[0.3em] font-black px-8 py-4 hover:invert transition-all">
                   Commander un reportage
                </Link>
             </div>
@@ -59,7 +58,7 @@ export default function LieuDetails({ params }: { params: { slug: string } }) {
       </section>
 
       <footer className="py-20 border-t border-white/10 flex flex-col items-center gap-6">
-         <div className="text-[10px] tracking-[0.5em] text-white/20 uppercase font-bold">© 2025 Skander Zarrad</div>
+         <div className="text-[10px] tracking-[0.5em] text-white/20 uppercase font-bold text-center">© 2025 Skander Zarrad</div>
          <Link href="https://giraafpark.com" target="_blank" className="text-[11px] tracking-[0.2em] text-white group flex flex-col items-center font-black">
            <span>DESIGNED & DEVELOPED BY GIRAAF PARK</span>
            <div className="h-[2px] w-full bg-white mt-1"></div>
